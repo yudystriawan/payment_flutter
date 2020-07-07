@@ -12,7 +12,8 @@ class AppWidget extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => getIt<PaypalDataBloc>(),
+          create: (_) =>
+              getIt<PaypalDataBloc>()..add(const PaypalDataEvent.getToken()),
         ),
       ],
       child: MaterialApp(

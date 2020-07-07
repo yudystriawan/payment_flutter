@@ -21,12 +21,12 @@ class PaypalRepository implements IPaypalRepository {
     final username = ConfigReader.getPaypalClientId();
     final password = ConfigReader.getPaypalSecret();
     final basicAuth =
-        'Basic${base64Encode(utf8.encode('$username:$password'))}';
+        'Basic ${base64Encode(utf8.encode('$username:$password'))}';
 
     _dio.options.headers['Authorization'] = basicAuth;
     _dio.options.contentType = Headers.formUrlEncodedContentType;
 
-    final request = {'grant-type': 'client_credentials'};
+    final request = {'grant_type': 'client_credentials'};
 
     try {
       final response = await _dio.post(
