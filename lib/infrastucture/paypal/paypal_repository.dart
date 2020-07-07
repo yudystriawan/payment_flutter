@@ -10,7 +10,6 @@ import 'package:payment_flutter/domain/paypal/token.dart';
 import 'package:payment_flutter/infrastucture/core/config_reader.dart';
 import 'package:payment_flutter/infrastucture/paypal/paypal_dtos.dart';
 
-@lazySingleton
 @Injectable(as: IPaypalRepository)
 class PaypalRepository implements IPaypalRepository {
   final Dio _dio;
