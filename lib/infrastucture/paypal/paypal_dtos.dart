@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:payment_flutter/domain/core/value_objects.dart';
 import 'package:payment_flutter/domain/paypal/token.dart';
+import 'package:payment_flutter/domain/paypal/value_objects.dart';
 
 part 'paypal_dtos.freezed.dart';
 part 'paypal_dtos.g.dart';
@@ -28,4 +30,17 @@ abstract class PaypalTokenDto with _$PaypalTokenDto {
 
   factory PaypalTokenDto.fromJson(Map<String, dynamic> json) =>
       _$PaypalTokenDtoFromJson(json);
+}
+
+extension PaypalTokenDtoX on PaypalTokenDto {
+  PaypalToken toDomain() {
+    return PaypalToken(
+      scope: StringSingleLine(scope),
+      accessToken: StringSingleLine(accessToken),
+      tokenType: StringSingleLine(tokenType),
+      appId: StringSingleLine(appId),
+      expiresIn: TokenExpiresIn(expiresIn),
+      nonce: StringSingleLine(nonce),
+    );
+  }
 }

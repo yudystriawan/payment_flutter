@@ -13,7 +13,7 @@ import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
   final dioInjectableModule = _$DioInjectableModule();
-  g.registerLazySingleton<Dio>(() => dioInjectableModule.dio);
+  g.registerFactory<Dio>(() => dioInjectableModule.dio);
   g.registerFactory<PaypalDataBloc>(
       () => PaypalDataBloc(g<IPaypalRepository>()));
   g.registerLazySingleton<PaypalRepository>(() => PaypalRepository(g<Dio>()));
