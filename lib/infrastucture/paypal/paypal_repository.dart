@@ -30,7 +30,7 @@ class PaypalRepository implements IPaypalRepository {
 
     try {
       final response = await _dio.post(
-        '${ConfigReader.getPaypalBaseUrl()}/oauth2/token',
+        '${ConfigReader.getPaypalBaseUrl()}/v1/oauth2/token',
         data: request,
       );
 
