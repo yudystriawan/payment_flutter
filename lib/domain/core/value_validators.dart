@@ -31,3 +31,11 @@ Either<ValueFailure<String>, String> validateSingleLine(String input) {
     return right(input);
   }
 }
+
+Either<ValueFailure<int>, int> validateNominal(int input) {
+  if (input < 0) {
+    return left(ValueFailure.nominalMinus(failedValue: input));
+  } else {
+    return right(input);
+  }
+}

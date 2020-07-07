@@ -14,4 +14,7 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.multiline({
     @required T failedValue,
   }) = Multiline<T>;
+  const factory ValueFailure.nominalMinus({
+    @required T failedValue,
+  }) = NominalMinus<T>;
 }

@@ -31,6 +31,12 @@ class _$ValueFailureTearOff {
       failedValue: failedValue,
     );
   }
+
+  NominalMinus<T> nominalMinus<T>({@required T failedValue}) {
+    return NominalMinus<T>(
+      failedValue: failedValue,
+    );
+  }
 }
 
 // ignore: unused_element
@@ -44,12 +50,14 @@ mixin _$ValueFailure<T> {
     @required Result empty(T failedValue),
     @required Result exceedingLength(T failedValue, int max),
     @required Result multiline(T failedValue),
+    @required Result nominalMinus(T failedValue),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result empty(T failedValue),
     Result exceedingLength(T failedValue, int max),
     Result multiline(T failedValue),
+    Result nominalMinus(T failedValue),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -57,12 +65,14 @@ mixin _$ValueFailure<T> {
     @required Result empty(Empty<T> value),
     @required Result exceedingLength(ExceedingLength<T> value),
     @required Result multiline(Multiline<T> value),
+    @required Result nominalMinus(NominalMinus<T> value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result empty(Empty<T> value),
     Result exceedingLength(ExceedingLength<T> value),
     Result multiline(Multiline<T> value),
+    Result nominalMinus(NominalMinus<T> value),
     @required Result orElse(),
   });
 
@@ -156,10 +166,12 @@ class _$Empty<T> implements Empty<T> {
     @required Result empty(T failedValue),
     @required Result exceedingLength(T failedValue, int max),
     @required Result multiline(T failedValue),
+    @required Result nominalMinus(T failedValue),
   }) {
     assert(empty != null);
     assert(exceedingLength != null);
     assert(multiline != null);
+    assert(nominalMinus != null);
     return empty(failedValue);
   }
 
@@ -169,6 +181,7 @@ class _$Empty<T> implements Empty<T> {
     Result empty(T failedValue),
     Result exceedingLength(T failedValue, int max),
     Result multiline(T failedValue),
+    Result nominalMinus(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -184,10 +197,12 @@ class _$Empty<T> implements Empty<T> {
     @required Result empty(Empty<T> value),
     @required Result exceedingLength(ExceedingLength<T> value),
     @required Result multiline(Multiline<T> value),
+    @required Result nominalMinus(NominalMinus<T> value),
   }) {
     assert(empty != null);
     assert(exceedingLength != null);
     assert(multiline != null);
+    assert(nominalMinus != null);
     return empty(this);
   }
 
@@ -197,6 +212,7 @@ class _$Empty<T> implements Empty<T> {
     Result empty(Empty<T> value),
     Result exceedingLength(ExceedingLength<T> value),
     Result multiline(Multiline<T> value),
+    Result nominalMinus(NominalMinus<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -290,10 +306,12 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     @required Result empty(T failedValue),
     @required Result exceedingLength(T failedValue, int max),
     @required Result multiline(T failedValue),
+    @required Result nominalMinus(T failedValue),
   }) {
     assert(empty != null);
     assert(exceedingLength != null);
     assert(multiline != null);
+    assert(nominalMinus != null);
     return exceedingLength(failedValue, max);
   }
 
@@ -303,6 +321,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     Result empty(T failedValue),
     Result exceedingLength(T failedValue, int max),
     Result multiline(T failedValue),
+    Result nominalMinus(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -318,10 +337,12 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     @required Result empty(Empty<T> value),
     @required Result exceedingLength(ExceedingLength<T> value),
     @required Result multiline(Multiline<T> value),
+    @required Result nominalMinus(NominalMinus<T> value),
   }) {
     assert(empty != null);
     assert(exceedingLength != null);
     assert(multiline != null);
+    assert(nominalMinus != null);
     return exceedingLength(this);
   }
 
@@ -331,6 +352,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     Result empty(Empty<T> value),
     Result exceedingLength(ExceedingLength<T> value),
     Result multiline(Multiline<T> value),
+    Result nominalMinus(NominalMinus<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -416,10 +438,12 @@ class _$Multiline<T> implements Multiline<T> {
     @required Result empty(T failedValue),
     @required Result exceedingLength(T failedValue, int max),
     @required Result multiline(T failedValue),
+    @required Result nominalMinus(T failedValue),
   }) {
     assert(empty != null);
     assert(exceedingLength != null);
     assert(multiline != null);
+    assert(nominalMinus != null);
     return multiline(failedValue);
   }
 
@@ -429,6 +453,7 @@ class _$Multiline<T> implements Multiline<T> {
     Result empty(T failedValue),
     Result exceedingLength(T failedValue, int max),
     Result multiline(T failedValue),
+    Result nominalMinus(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -444,10 +469,12 @@ class _$Multiline<T> implements Multiline<T> {
     @required Result empty(Empty<T> value),
     @required Result exceedingLength(ExceedingLength<T> value),
     @required Result multiline(Multiline<T> value),
+    @required Result nominalMinus(NominalMinus<T> value),
   }) {
     assert(empty != null);
     assert(exceedingLength != null);
     assert(multiline != null);
+    assert(nominalMinus != null);
     return multiline(this);
   }
 
@@ -457,6 +484,7 @@ class _$Multiline<T> implements Multiline<T> {
     Result empty(Empty<T> value),
     Result exceedingLength(ExceedingLength<T> value),
     Result multiline(Multiline<T> value),
+    Result nominalMinus(NominalMinus<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -474,4 +502,135 @@ abstract class Multiline<T> implements ValueFailure<T> {
   T get failedValue;
   @override
   $MultilineCopyWith<T, Multiline<T>> get copyWith;
+}
+
+abstract class $NominalMinusCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $NominalMinusCopyWith(
+          NominalMinus<T> value, $Res Function(NominalMinus<T>) then) =
+      _$NominalMinusCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+class _$NominalMinusCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $NominalMinusCopyWith<T, $Res> {
+  _$NominalMinusCopyWithImpl(
+      NominalMinus<T> _value, $Res Function(NominalMinus<T>) _then)
+      : super(_value, (v) => _then(v as NominalMinus<T>));
+
+  @override
+  NominalMinus<T> get _value => super._value as NominalMinus<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+  }) {
+    return _then(NominalMinus<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
+    ));
+  }
+}
+
+class _$NominalMinus<T> implements NominalMinus<T> {
+  const _$NominalMinus({@required this.failedValue})
+      : assert(failedValue != null);
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.nominalMinus(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is NominalMinus<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+
+  @override
+  $NominalMinusCopyWith<T, NominalMinus<T>> get copyWith =>
+      _$NominalMinusCopyWithImpl<T, NominalMinus<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result empty(T failedValue),
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result multiline(T failedValue),
+    @required Result nominalMinus(T failedValue),
+  }) {
+    assert(empty != null);
+    assert(exceedingLength != null);
+    assert(multiline != null);
+    assert(nominalMinus != null);
+    return nominalMinus(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result empty(T failedValue),
+    Result exceedingLength(T failedValue, int max),
+    Result multiline(T failedValue),
+    Result nominalMinus(T failedValue),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (nominalMinus != null) {
+      return nominalMinus(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result empty(Empty<T> value),
+    @required Result exceedingLength(ExceedingLength<T> value),
+    @required Result multiline(Multiline<T> value),
+    @required Result nominalMinus(NominalMinus<T> value),
+  }) {
+    assert(empty != null);
+    assert(exceedingLength != null);
+    assert(multiline != null);
+    assert(nominalMinus != null);
+    return nominalMinus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result empty(Empty<T> value),
+    Result exceedingLength(ExceedingLength<T> value),
+    Result multiline(Multiline<T> value),
+    Result nominalMinus(NominalMinus<T> value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (nominalMinus != null) {
+      return nominalMinus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NominalMinus<T> implements ValueFailure<T> {
+  const factory NominalMinus({@required T failedValue}) = _$NominalMinus<T>;
+
+  @override
+  T get failedValue;
+  @override
+  $NominalMinusCopyWith<T, NominalMinus<T>> get copyWith;
 }
