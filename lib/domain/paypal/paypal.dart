@@ -40,11 +40,13 @@ abstract class CreateOrder with _$CreateOrder {
   const factory CreateOrder({
     @required StringSingleLine intent,
     @required List<PurchaseUnit> purchaseUnits,
+    @required ApplicationContext applicationContext,
   }) = _CreateOrder;
 
   factory CreateOrder.empty() => CreateOrder(
         intent: StringSingleLine(''),
         purchaseUnits: <PurchaseUnit>[],
+        applicationContext: ApplicationContext.empty(),
       );
 }
 
@@ -67,5 +69,18 @@ abstract class Amount with _$Amount {
   factory Amount.empty() => Amount(
         currencyCode: StringSingleLine(''),
         value: StringSingleLine(''),
+      );
+}
+
+@freezed
+abstract class ApplicationContext with _$ApplicationContext {
+  const factory ApplicationContext({
+    @required StringSingleLine returnUrl,
+    @required StringSingleLine cancelUrl,
+  }) = _ApplicationContext;
+
+  factory ApplicationContext.empty() => ApplicationContext(
+        returnUrl: StringSingleLine(''),
+        cancelUrl: StringSingleLine(''),
       );
 }

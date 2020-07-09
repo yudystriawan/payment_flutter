@@ -310,10 +310,12 @@ class _$CreateOrderTearOff {
 
   _CreateOrder call(
       {@required StringSingleLine intent,
-      @required List<PurchaseUnit> purchaseUnits}) {
+      @required List<PurchaseUnit> purchaseUnits,
+      @required ApplicationContext applicationContext}) {
     return _CreateOrder(
       intent: intent,
       purchaseUnits: purchaseUnits,
+      applicationContext: applicationContext,
     );
   }
 }
@@ -324,6 +326,7 @@ const $CreateOrder = _$CreateOrderTearOff();
 mixin _$CreateOrder {
   StringSingleLine get intent;
   List<PurchaseUnit> get purchaseUnits;
+  ApplicationContext get applicationContext;
 
   $CreateOrderCopyWith<CreateOrder> get copyWith;
 }
@@ -332,7 +335,12 @@ abstract class $CreateOrderCopyWith<$Res> {
   factory $CreateOrderCopyWith(
           CreateOrder value, $Res Function(CreateOrder) then) =
       _$CreateOrderCopyWithImpl<$Res>;
-  $Res call({StringSingleLine intent, List<PurchaseUnit> purchaseUnits});
+  $Res call(
+      {StringSingleLine intent,
+      List<PurchaseUnit> purchaseUnits,
+      ApplicationContext applicationContext});
+
+  $ApplicationContextCopyWith<$Res> get applicationContext;
 }
 
 class _$CreateOrderCopyWithImpl<$Res> implements $CreateOrderCopyWith<$Res> {
@@ -346,13 +354,28 @@ class _$CreateOrderCopyWithImpl<$Res> implements $CreateOrderCopyWith<$Res> {
   $Res call({
     Object intent = freezed,
     Object purchaseUnits = freezed,
+    Object applicationContext = freezed,
   }) {
     return _then(_value.copyWith(
       intent: intent == freezed ? _value.intent : intent as StringSingleLine,
       purchaseUnits: purchaseUnits == freezed
           ? _value.purchaseUnits
           : purchaseUnits as List<PurchaseUnit>,
+      applicationContext: applicationContext == freezed
+          ? _value.applicationContext
+          : applicationContext as ApplicationContext,
     ));
+  }
+
+  @override
+  $ApplicationContextCopyWith<$Res> get applicationContext {
+    if (_value.applicationContext == null) {
+      return null;
+    }
+    return $ApplicationContextCopyWith<$Res>(_value.applicationContext,
+        (value) {
+      return _then(_value.copyWith(applicationContext: value));
+    });
   }
 }
 
@@ -362,7 +385,13 @@ abstract class _$CreateOrderCopyWith<$Res>
           _CreateOrder value, $Res Function(_CreateOrder) then) =
       __$CreateOrderCopyWithImpl<$Res>;
   @override
-  $Res call({StringSingleLine intent, List<PurchaseUnit> purchaseUnits});
+  $Res call(
+      {StringSingleLine intent,
+      List<PurchaseUnit> purchaseUnits,
+      ApplicationContext applicationContext});
+
+  @override
+  $ApplicationContextCopyWith<$Res> get applicationContext;
 }
 
 class __$CreateOrderCopyWithImpl<$Res> extends _$CreateOrderCopyWithImpl<$Res>
@@ -378,29 +407,39 @@ class __$CreateOrderCopyWithImpl<$Res> extends _$CreateOrderCopyWithImpl<$Res>
   $Res call({
     Object intent = freezed,
     Object purchaseUnits = freezed,
+    Object applicationContext = freezed,
   }) {
     return _then(_CreateOrder(
       intent: intent == freezed ? _value.intent : intent as StringSingleLine,
       purchaseUnits: purchaseUnits == freezed
           ? _value.purchaseUnits
           : purchaseUnits as List<PurchaseUnit>,
+      applicationContext: applicationContext == freezed
+          ? _value.applicationContext
+          : applicationContext as ApplicationContext,
     ));
   }
 }
 
 class _$_CreateOrder implements _CreateOrder {
-  const _$_CreateOrder({@required this.intent, @required this.purchaseUnits})
+  const _$_CreateOrder(
+      {@required this.intent,
+      @required this.purchaseUnits,
+      @required this.applicationContext})
       : assert(intent != null),
-        assert(purchaseUnits != null);
+        assert(purchaseUnits != null),
+        assert(applicationContext != null);
 
   @override
   final StringSingleLine intent;
   @override
   final List<PurchaseUnit> purchaseUnits;
+  @override
+  final ApplicationContext applicationContext;
 
   @override
   String toString() {
-    return 'CreateOrder(intent: $intent, purchaseUnits: $purchaseUnits)';
+    return 'CreateOrder(intent: $intent, purchaseUnits: $purchaseUnits, applicationContext: $applicationContext)';
   }
 
   @override
@@ -411,14 +450,18 @@ class _$_CreateOrder implements _CreateOrder {
                 const DeepCollectionEquality().equals(other.intent, intent)) &&
             (identical(other.purchaseUnits, purchaseUnits) ||
                 const DeepCollectionEquality()
-                    .equals(other.purchaseUnits, purchaseUnits)));
+                    .equals(other.purchaseUnits, purchaseUnits)) &&
+            (identical(other.applicationContext, applicationContext) ||
+                const DeepCollectionEquality()
+                    .equals(other.applicationContext, applicationContext)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(intent) ^
-      const DeepCollectionEquality().hash(purchaseUnits);
+      const DeepCollectionEquality().hash(purchaseUnits) ^
+      const DeepCollectionEquality().hash(applicationContext);
 
   @override
   _$CreateOrderCopyWith<_CreateOrder> get copyWith =>
@@ -428,12 +471,15 @@ class _$_CreateOrder implements _CreateOrder {
 abstract class _CreateOrder implements CreateOrder {
   const factory _CreateOrder(
       {@required StringSingleLine intent,
-      @required List<PurchaseUnit> purchaseUnits}) = _$_CreateOrder;
+      @required List<PurchaseUnit> purchaseUnits,
+      @required ApplicationContext applicationContext}) = _$_CreateOrder;
 
   @override
   StringSingleLine get intent;
   @override
   List<PurchaseUnit> get purchaseUnits;
+  @override
+  ApplicationContext get applicationContext;
   @override
   _$CreateOrderCopyWith<_CreateOrder> get copyWith;
 }
@@ -688,4 +734,145 @@ abstract class _Amount implements Amount {
   StringSingleLine get value;
   @override
   _$AmountCopyWith<_Amount> get copyWith;
+}
+
+class _$ApplicationContextTearOff {
+  const _$ApplicationContextTearOff();
+
+  _ApplicationContext call(
+      {@required StringSingleLine returnUrl,
+      @required StringSingleLine cancelUrl}) {
+    return _ApplicationContext(
+      returnUrl: returnUrl,
+      cancelUrl: cancelUrl,
+    );
+  }
+}
+
+// ignore: unused_element
+const $ApplicationContext = _$ApplicationContextTearOff();
+
+mixin _$ApplicationContext {
+  StringSingleLine get returnUrl;
+  StringSingleLine get cancelUrl;
+
+  $ApplicationContextCopyWith<ApplicationContext> get copyWith;
+}
+
+abstract class $ApplicationContextCopyWith<$Res> {
+  factory $ApplicationContextCopyWith(
+          ApplicationContext value, $Res Function(ApplicationContext) then) =
+      _$ApplicationContextCopyWithImpl<$Res>;
+  $Res call({StringSingleLine returnUrl, StringSingleLine cancelUrl});
+}
+
+class _$ApplicationContextCopyWithImpl<$Res>
+    implements $ApplicationContextCopyWith<$Res> {
+  _$ApplicationContextCopyWithImpl(this._value, this._then);
+
+  final ApplicationContext _value;
+  // ignore: unused_field
+  final $Res Function(ApplicationContext) _then;
+
+  @override
+  $Res call({
+    Object returnUrl = freezed,
+    Object cancelUrl = freezed,
+  }) {
+    return _then(_value.copyWith(
+      returnUrl: returnUrl == freezed
+          ? _value.returnUrl
+          : returnUrl as StringSingleLine,
+      cancelUrl: cancelUrl == freezed
+          ? _value.cancelUrl
+          : cancelUrl as StringSingleLine,
+    ));
+  }
+}
+
+abstract class _$ApplicationContextCopyWith<$Res>
+    implements $ApplicationContextCopyWith<$Res> {
+  factory _$ApplicationContextCopyWith(
+          _ApplicationContext value, $Res Function(_ApplicationContext) then) =
+      __$ApplicationContextCopyWithImpl<$Res>;
+  @override
+  $Res call({StringSingleLine returnUrl, StringSingleLine cancelUrl});
+}
+
+class __$ApplicationContextCopyWithImpl<$Res>
+    extends _$ApplicationContextCopyWithImpl<$Res>
+    implements _$ApplicationContextCopyWith<$Res> {
+  __$ApplicationContextCopyWithImpl(
+      _ApplicationContext _value, $Res Function(_ApplicationContext) _then)
+      : super(_value, (v) => _then(v as _ApplicationContext));
+
+  @override
+  _ApplicationContext get _value => super._value as _ApplicationContext;
+
+  @override
+  $Res call({
+    Object returnUrl = freezed,
+    Object cancelUrl = freezed,
+  }) {
+    return _then(_ApplicationContext(
+      returnUrl: returnUrl == freezed
+          ? _value.returnUrl
+          : returnUrl as StringSingleLine,
+      cancelUrl: cancelUrl == freezed
+          ? _value.cancelUrl
+          : cancelUrl as StringSingleLine,
+    ));
+  }
+}
+
+class _$_ApplicationContext implements _ApplicationContext {
+  const _$_ApplicationContext(
+      {@required this.returnUrl, @required this.cancelUrl})
+      : assert(returnUrl != null),
+        assert(cancelUrl != null);
+
+  @override
+  final StringSingleLine returnUrl;
+  @override
+  final StringSingleLine cancelUrl;
+
+  @override
+  String toString() {
+    return 'ApplicationContext(returnUrl: $returnUrl, cancelUrl: $cancelUrl)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ApplicationContext &&
+            (identical(other.returnUrl, returnUrl) ||
+                const DeepCollectionEquality()
+                    .equals(other.returnUrl, returnUrl)) &&
+            (identical(other.cancelUrl, cancelUrl) ||
+                const DeepCollectionEquality()
+                    .equals(other.cancelUrl, cancelUrl)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(returnUrl) ^
+      const DeepCollectionEquality().hash(cancelUrl);
+
+  @override
+  _$ApplicationContextCopyWith<_ApplicationContext> get copyWith =>
+      __$ApplicationContextCopyWithImpl<_ApplicationContext>(this, _$identity);
+}
+
+abstract class _ApplicationContext implements ApplicationContext {
+  const factory _ApplicationContext(
+      {@required StringSingleLine returnUrl,
+      @required StringSingleLine cancelUrl}) = _$_ApplicationContext;
+
+  @override
+  StringSingleLine get returnUrl;
+  @override
+  StringSingleLine get cancelUrl;
+  @override
+  _$ApplicationContextCopyWith<_ApplicationContext> get copyWith;
 }

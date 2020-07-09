@@ -38,6 +38,10 @@ class PaypalDataBloc extends Bloc<PaypalDataEvent, PaypalDataState> {
           createOrder: CreateOrder(
             intent: StringSingleLine('CAPTURE'),
             purchaseUnits: purchaseUnits,
+            applicationContext: ApplicationContext(
+              returnUrl: StringSingleLine('com.example.return'),
+              cancelUrl: StringSingleLine('com.example.cancel'),
+            ),
           ),
         );
       },
