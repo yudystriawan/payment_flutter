@@ -14,21 +14,28 @@ class PaypalAppovedPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final approveUrl = orderResponse.links
-    //     .firstWhere((element) => element.rel.getOrCrash() == 'approve')
-    //     .href
-    //     .getOrCrash();
+    final approveUrl = orderResponse.links
+        .firstWhere((element) => element.rel.getOrCrash() == 'approve')
+        .href
+        .getOrCrash();
     // debugPrint(approveUrl);
-    // final _controller = Completer<WebViewController>();
+    final _controller = Completer<WebViewController>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Approve Order'),
       ),
       body: WebView(
-        initialUrl: 'www.facebook.com',
+        initialUrl: approveUrl,
         javascriptMode: JavascriptMode.unrestricted,
         onPageStarted: (url) => debugPrint('pageStarted $url'),
         onPageFinished: (url) => debugPrint('pageFinished $url'),
+        onWebViewCreated: (controller) => _controller.complete(controller),
+        navigationDelegate: (navigation) {
+          final uri = Uri.parse(navigation.url);
+          debugPrint('navigation ${navigation.url}');
+          debugPrint('uri ${uri.queryParameters}');
+          return;
+        },
       ),
     );
   }
