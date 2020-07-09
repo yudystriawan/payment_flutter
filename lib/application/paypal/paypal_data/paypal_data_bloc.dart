@@ -6,8 +6,10 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import 'package:payment_flutter/domain/core/value_objects.dart';
 
 import 'package:payment_flutter/domain/paypal/i_paypal_repository.dart';
+import 'package:payment_flutter/domain/paypal/paypal.dart';
 import 'package:payment_flutter/domain/paypal/paypal_failure.dart';
 import 'package:payment_flutter/domain/paypal/token.dart';
 
@@ -27,15 +29,42 @@ class PaypalDataBloc extends Bloc<PaypalDataEvent, PaypalDataState> {
   Stream<PaypalDataState> mapEventToState(
     PaypalDataEvent event,
   ) async* {
-    yield state.copyWith.call(
-      isLoading: true,
-    );
+    yield* event.map(
+      amountChanged: (e) async* {
+        final purchaseUnits = <PurchaseUnit>[];
+        purchaseUnits.add(PurchaseUnit(amount: e.amount));
 
-    final failureOrSuccess = await _paypalRepository.fetchToken();
+        yield state.copyWith.call(
+          createOrder: CreateOrder(
+            intent: StringSingleLine('CAPTURE'),
+            purchaseUnits: purchaseUnits,
+          ),
+        );
+      },
+      checkoutButtonPressed: (e) async* {
+        Either<PaypalFailure, Unit> createOrderFailureOrSuccess;
+        yield state.copyWith.call(
+          isLoading: true,
+        );
 
-    yield state.copyWith.call(
-      isLoading: false,
-      paypalTokenFailureOrSuccess: optionOf(failureOrSuccess),
+        final tokenFailureOrSuccess = await _paypalRepository.fetchToken();
+
+        if (tokenFailureOrSuccess.isRight()) {
+          createOrderFailureOrSuccess = await _paypalRepository.createOrder(
+            paypalToken: tokenFailureOrSuccess.fold(
+              (l) => PaypalToken.empty(),
+              (paypalToken) => paypalToken,
+            ),
+            createOrder: state.createOrder,
+          );
+        }
+
+        yield state.copyWith.call(
+          isLoading: false,
+          createOrderFailureOrSuccessOption:
+              optionOf(createOrderFailureOrSuccess),
+        );
+      },
     );
   }
 }

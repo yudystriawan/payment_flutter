@@ -30,6 +30,7 @@ dependencies:
   get_it: ^4.0.2
   injectable: ^0.4.0+1
   dio: ^3.0.9
+  json_annotation: ^3.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -40,7 +41,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   lint: ^1.2.0
-  build_runner: ^1.10.0
+  build_runner: 
   freezed: ^0.11.2
   auto_route_generator: ^0.6.0
   injectable_generator: ^0.4.1

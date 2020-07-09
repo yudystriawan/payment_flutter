@@ -7,8 +7,6 @@ part of 'paypal_failure.dart';
 // FreezedGenerator
 // **************************************************************************
 
-T _$identity<T>(T value) => value;
-
 class _$PaypalFailureTearOff {
   const _$PaypalFailureTearOff();
 

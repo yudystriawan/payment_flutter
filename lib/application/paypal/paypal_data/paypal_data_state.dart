@@ -4,12 +4,14 @@ part of 'paypal_data_bloc.dart';
 abstract class PaypalDataState with _$PaypalDataState {
   const factory PaypalDataState({
     @required bool isLoading,
+    @required CreateOrder createOrder,
     @required
-        Option<Either<PaypalFailure, PaypalToken>> paypalTokenFailureOrSuccess,
+        Option<Either<PaypalFailure, Unit>> createOrderFailureOrSuccessOption,
   }) = _PaypalDataState;
 
   factory PaypalDataState.initial() => PaypalDataState(
         isLoading: false,
-        paypalTokenFailureOrSuccess: none(),
+        createOrder: CreateOrder.empty(),
+        createOrderFailureOrSuccessOption: none(),
       );
 }

@@ -12,8 +12,14 @@ T _$identity<T>(T value) => value;
 class _$PaypalDataEventTearOff {
   const _$PaypalDataEventTearOff();
 
-  _GetToken getToken() {
-    return const _GetToken();
+  _AmountChanged amountChanged(Amount amount) {
+    return _AmountChanged(
+      amount,
+    );
+  }
+
+  _CheckoutButtonPressed checkoutButtonPressed() {
+    return const _CheckoutButtonPressed();
   }
 }
 
@@ -23,20 +29,24 @@ const $PaypalDataEvent = _$PaypalDataEventTearOff();
 mixin _$PaypalDataEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result getToken(),
+    @required Result amountChanged(Amount amount),
+    @required Result checkoutButtonPressed(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result getToken(),
+    Result amountChanged(Amount amount),
+    Result checkoutButtonPressed(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result getToken(_GetToken value),
+    @required Result amountChanged(_AmountChanged value),
+    @required Result checkoutButtonPressed(_CheckoutButtonPressed value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result getToken(_GetToken value),
+    Result amountChanged(_AmountChanged value),
+    Result checkoutButtonPressed(_CheckoutButtonPressed value),
     @required Result orElse(),
   });
 }
@@ -56,37 +66,176 @@ class _$PaypalDataEventCopyWithImpl<$Res>
   final $Res Function(PaypalDataEvent) _then;
 }
 
-abstract class _$GetTokenCopyWith<$Res> {
-  factory _$GetTokenCopyWith(_GetToken value, $Res Function(_GetToken) then) =
-      __$GetTokenCopyWithImpl<$Res>;
+abstract class _$AmountChangedCopyWith<$Res> {
+  factory _$AmountChangedCopyWith(
+          _AmountChanged value, $Res Function(_AmountChanged) then) =
+      __$AmountChangedCopyWithImpl<$Res>;
+  $Res call({Amount amount});
+
+  $AmountCopyWith<$Res> get amount;
 }
 
-class __$GetTokenCopyWithImpl<$Res> extends _$PaypalDataEventCopyWithImpl<$Res>
-    implements _$GetTokenCopyWith<$Res> {
-  __$GetTokenCopyWithImpl(_GetToken _value, $Res Function(_GetToken) _then)
-      : super(_value, (v) => _then(v as _GetToken));
+class __$AmountChangedCopyWithImpl<$Res>
+    extends _$PaypalDataEventCopyWithImpl<$Res>
+    implements _$AmountChangedCopyWith<$Res> {
+  __$AmountChangedCopyWithImpl(
+      _AmountChanged _value, $Res Function(_AmountChanged) _then)
+      : super(_value, (v) => _then(v as _AmountChanged));
 
   @override
-  _GetToken get _value => super._value as _GetToken;
+  _AmountChanged get _value => super._value as _AmountChanged;
+
+  @override
+  $Res call({
+    Object amount = freezed,
+  }) {
+    return _then(_AmountChanged(
+      amount == freezed ? _value.amount : amount as Amount,
+    ));
+  }
+
+  @override
+  $AmountCopyWith<$Res> get amount {
+    if (_value.amount == null) {
+      return null;
+    }
+    return $AmountCopyWith<$Res>(_value.amount, (value) {
+      return _then(_value.copyWith(amount: value));
+    });
+  }
 }
 
-class _$_GetToken with DiagnosticableTreeMixin implements _GetToken {
-  const _$_GetToken();
+class _$_AmountChanged with DiagnosticableTreeMixin implements _AmountChanged {
+  const _$_AmountChanged(this.amount) : assert(amount != null);
+
+  @override
+  final Amount amount;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PaypalDataEvent.getToken()';
+    return 'PaypalDataEvent.amountChanged(amount: $amount)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'PaypalDataEvent.getToken'));
+    properties
+      ..add(DiagnosticsProperty('type', 'PaypalDataEvent.amountChanged'))
+      ..add(DiagnosticsProperty('amount', amount));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _GetToken);
+    return identical(this, other) ||
+        (other is _AmountChanged &&
+            (identical(other.amount, amount) ||
+                const DeepCollectionEquality().equals(other.amount, amount)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(amount);
+
+  @override
+  _$AmountChangedCopyWith<_AmountChanged> get copyWith =>
+      __$AmountChangedCopyWithImpl<_AmountChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result amountChanged(Amount amount),
+    @required Result checkoutButtonPressed(),
+  }) {
+    assert(amountChanged != null);
+    assert(checkoutButtonPressed != null);
+    return amountChanged(amount);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result amountChanged(Amount amount),
+    Result checkoutButtonPressed(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (amountChanged != null) {
+      return amountChanged(amount);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result amountChanged(_AmountChanged value),
+    @required Result checkoutButtonPressed(_CheckoutButtonPressed value),
+  }) {
+    assert(amountChanged != null);
+    assert(checkoutButtonPressed != null);
+    return amountChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result amountChanged(_AmountChanged value),
+    Result checkoutButtonPressed(_CheckoutButtonPressed value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (amountChanged != null) {
+      return amountChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AmountChanged implements PaypalDataEvent {
+  const factory _AmountChanged(Amount amount) = _$_AmountChanged;
+
+  Amount get amount;
+  _$AmountChangedCopyWith<_AmountChanged> get copyWith;
+}
+
+abstract class _$CheckoutButtonPressedCopyWith<$Res> {
+  factory _$CheckoutButtonPressedCopyWith(_CheckoutButtonPressed value,
+          $Res Function(_CheckoutButtonPressed) then) =
+      __$CheckoutButtonPressedCopyWithImpl<$Res>;
+}
+
+class __$CheckoutButtonPressedCopyWithImpl<$Res>
+    extends _$PaypalDataEventCopyWithImpl<$Res>
+    implements _$CheckoutButtonPressedCopyWith<$Res> {
+  __$CheckoutButtonPressedCopyWithImpl(_CheckoutButtonPressed _value,
+      $Res Function(_CheckoutButtonPressed) _then)
+      : super(_value, (v) => _then(v as _CheckoutButtonPressed));
+
+  @override
+  _CheckoutButtonPressed get _value => super._value as _CheckoutButtonPressed;
+}
+
+class _$_CheckoutButtonPressed
+    with DiagnosticableTreeMixin
+    implements _CheckoutButtonPressed {
+  const _$_CheckoutButtonPressed();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PaypalDataEvent.checkoutButtonPressed()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'PaypalDataEvent.checkoutButtonPressed'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _CheckoutButtonPressed);
   }
 
   @override
@@ -95,21 +244,24 @@ class _$_GetToken with DiagnosticableTreeMixin implements _GetToken {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result getToken(),
+    @required Result amountChanged(Amount amount),
+    @required Result checkoutButtonPressed(),
   }) {
-    assert(getToken != null);
-    return getToken();
+    assert(amountChanged != null);
+    assert(checkoutButtonPressed != null);
+    return checkoutButtonPressed();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result getToken(),
+    Result amountChanged(Amount amount),
+    Result checkoutButtonPressed(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (getToken != null) {
-      return getToken();
+    if (checkoutButtonPressed != null) {
+      return checkoutButtonPressed();
     }
     return orElse();
   }
@@ -117,28 +269,31 @@ class _$_GetToken with DiagnosticableTreeMixin implements _GetToken {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result getToken(_GetToken value),
+    @required Result amountChanged(_AmountChanged value),
+    @required Result checkoutButtonPressed(_CheckoutButtonPressed value),
   }) {
-    assert(getToken != null);
-    return getToken(this);
+    assert(amountChanged != null);
+    assert(checkoutButtonPressed != null);
+    return checkoutButtonPressed(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result getToken(_GetToken value),
+    Result amountChanged(_AmountChanged value),
+    Result checkoutButtonPressed(_CheckoutButtonPressed value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (getToken != null) {
-      return getToken(this);
+    if (checkoutButtonPressed != null) {
+      return checkoutButtonPressed(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetToken implements PaypalDataEvent {
-  const factory _GetToken() = _$_GetToken;
+abstract class _CheckoutButtonPressed implements PaypalDataEvent {
+  const factory _CheckoutButtonPressed() = _$_CheckoutButtonPressed;
 }
 
 class _$PaypalDataStateTearOff {
@@ -148,11 +303,14 @@ class _$PaypalDataStateTearOff {
       {@required
           bool isLoading,
       @required
-          Option<Either<PaypalFailure, PaypalToken>>
-              paypalTokenFailureOrSuccess}) {
+          CreateOrder createOrder,
+      @required
+          Option<Either<PaypalFailure, Unit>>
+              createOrderFailureOrSuccessOption}) {
     return _PaypalDataState(
       isLoading: isLoading,
-      paypalTokenFailureOrSuccess: paypalTokenFailureOrSuccess,
+      createOrder: createOrder,
+      createOrderFailureOrSuccessOption: createOrderFailureOrSuccessOption,
     );
   }
 }
@@ -162,7 +320,8 @@ const $PaypalDataState = _$PaypalDataStateTearOff();
 
 mixin _$PaypalDataState {
   bool get isLoading;
-  Option<Either<PaypalFailure, PaypalToken>> get paypalTokenFailureOrSuccess;
+  CreateOrder get createOrder;
+  Option<Either<PaypalFailure, Unit>> get createOrderFailureOrSuccessOption;
 
   $PaypalDataStateCopyWith<PaypalDataState> get copyWith;
 }
@@ -173,7 +332,10 @@ abstract class $PaypalDataStateCopyWith<$Res> {
       _$PaypalDataStateCopyWithImpl<$Res>;
   $Res call(
       {bool isLoading,
-      Option<Either<PaypalFailure, PaypalToken>> paypalTokenFailureOrSuccess});
+      CreateOrder createOrder,
+      Option<Either<PaypalFailure, Unit>> createOrderFailureOrSuccessOption});
+
+  $CreateOrderCopyWith<$Res> get createOrder;
 }
 
 class _$PaypalDataStateCopyWithImpl<$Res>
@@ -187,15 +349,30 @@ class _$PaypalDataStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object isLoading = freezed,
-    Object paypalTokenFailureOrSuccess = freezed,
+    Object createOrder = freezed,
+    Object createOrderFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
-      paypalTokenFailureOrSuccess: paypalTokenFailureOrSuccess == freezed
-          ? _value.paypalTokenFailureOrSuccess
-          : paypalTokenFailureOrSuccess
-              as Option<Either<PaypalFailure, PaypalToken>>,
+      createOrder: createOrder == freezed
+          ? _value.createOrder
+          : createOrder as CreateOrder,
+      createOrderFailureOrSuccessOption:
+          createOrderFailureOrSuccessOption == freezed
+              ? _value.createOrderFailureOrSuccessOption
+              : createOrderFailureOrSuccessOption
+                  as Option<Either<PaypalFailure, Unit>>,
     ));
+  }
+
+  @override
+  $CreateOrderCopyWith<$Res> get createOrder {
+    if (_value.createOrder == null) {
+      return null;
+    }
+    return $CreateOrderCopyWith<$Res>(_value.createOrder, (value) {
+      return _then(_value.copyWith(createOrder: value));
+    });
   }
 }
 
@@ -207,7 +384,11 @@ abstract class _$PaypalDataStateCopyWith<$Res>
   @override
   $Res call(
       {bool isLoading,
-      Option<Either<PaypalFailure, PaypalToken>> paypalTokenFailureOrSuccess});
+      CreateOrder createOrder,
+      Option<Either<PaypalFailure, Unit>> createOrderFailureOrSuccessOption});
+
+  @override
+  $CreateOrderCopyWith<$Res> get createOrder;
 }
 
 class __$PaypalDataStateCopyWithImpl<$Res>
@@ -223,14 +404,19 @@ class __$PaypalDataStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object isLoading = freezed,
-    Object paypalTokenFailureOrSuccess = freezed,
+    Object createOrder = freezed,
+    Object createOrderFailureOrSuccessOption = freezed,
   }) {
     return _then(_PaypalDataState(
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
-      paypalTokenFailureOrSuccess: paypalTokenFailureOrSuccess == freezed
-          ? _value.paypalTokenFailureOrSuccess
-          : paypalTokenFailureOrSuccess
-              as Option<Either<PaypalFailure, PaypalToken>>,
+      createOrder: createOrder == freezed
+          ? _value.createOrder
+          : createOrder as CreateOrder,
+      createOrderFailureOrSuccessOption:
+          createOrderFailureOrSuccessOption == freezed
+              ? _value.createOrderFailureOrSuccessOption
+              : createOrderFailureOrSuccessOption
+                  as Option<Either<PaypalFailure, Unit>>,
     ));
   }
 }
@@ -239,18 +425,23 @@ class _$_PaypalDataState
     with DiagnosticableTreeMixin
     implements _PaypalDataState {
   const _$_PaypalDataState(
-      {@required this.isLoading, @required this.paypalTokenFailureOrSuccess})
+      {@required this.isLoading,
+      @required this.createOrder,
+      @required this.createOrderFailureOrSuccessOption})
       : assert(isLoading != null),
-        assert(paypalTokenFailureOrSuccess != null);
+        assert(createOrder != null),
+        assert(createOrderFailureOrSuccessOption != null);
 
   @override
   final bool isLoading;
   @override
-  final Option<Either<PaypalFailure, PaypalToken>> paypalTokenFailureOrSuccess;
+  final CreateOrder createOrder;
+  @override
+  final Option<Either<PaypalFailure, Unit>> createOrderFailureOrSuccessOption;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PaypalDataState(isLoading: $isLoading, paypalTokenFailureOrSuccess: $paypalTokenFailureOrSuccess)';
+    return 'PaypalDataState(isLoading: $isLoading, createOrder: $createOrder, createOrderFailureOrSuccessOption: $createOrderFailureOrSuccessOption)';
   }
 
   @override
@@ -259,8 +450,9 @@ class _$_PaypalDataState
     properties
       ..add(DiagnosticsProperty('type', 'PaypalDataState'))
       ..add(DiagnosticsProperty('isLoading', isLoading))
-      ..add(DiagnosticsProperty(
-          'paypalTokenFailureOrSuccess', paypalTokenFailureOrSuccess));
+      ..add(DiagnosticsProperty('createOrder', createOrder))
+      ..add(DiagnosticsProperty('createOrderFailureOrSuccessOption',
+          createOrderFailureOrSuccessOption));
   }
 
   @override
@@ -270,18 +462,22 @@ class _$_PaypalDataState
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
                     .equals(other.isLoading, isLoading)) &&
-            (identical(other.paypalTokenFailureOrSuccess,
-                    paypalTokenFailureOrSuccess) ||
+            (identical(other.createOrder, createOrder) ||
+                const DeepCollectionEquality()
+                    .equals(other.createOrder, createOrder)) &&
+            (identical(other.createOrderFailureOrSuccessOption,
+                    createOrderFailureOrSuccessOption) ||
                 const DeepCollectionEquality().equals(
-                    other.paypalTokenFailureOrSuccess,
-                    paypalTokenFailureOrSuccess)));
+                    other.createOrderFailureOrSuccessOption,
+                    createOrderFailureOrSuccessOption)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(isLoading) ^
-      const DeepCollectionEquality().hash(paypalTokenFailureOrSuccess);
+      const DeepCollectionEquality().hash(createOrder) ^
+      const DeepCollectionEquality().hash(createOrderFailureOrSuccessOption);
 
   @override
   _$PaypalDataStateCopyWith<_PaypalDataState> get copyWith =>
@@ -293,13 +489,17 @@ abstract class _PaypalDataState implements PaypalDataState {
       {@required
           bool isLoading,
       @required
-          Option<Either<PaypalFailure, PaypalToken>>
-              paypalTokenFailureOrSuccess}) = _$_PaypalDataState;
+          CreateOrder createOrder,
+      @required
+          Option<Either<PaypalFailure, Unit>>
+              createOrderFailureOrSuccessOption}) = _$_PaypalDataState;
 
   @override
   bool get isLoading;
   @override
-  Option<Either<PaypalFailure, PaypalToken>> get paypalTokenFailureOrSuccess;
+  CreateOrder get createOrder;
+  @override
+  Option<Either<PaypalFailure, Unit>> get createOrderFailureOrSuccessOption;
   @override
   _$PaypalDataStateCopyWith<_PaypalDataState> get copyWith;
 }
