@@ -51,7 +51,7 @@ class PaypalRepository implements IPaypalRepository {
   }
 
   @override
-  Future<Either<PaypalFailure, Unit>> createOrder({
+  Future<Either<PaypalFailure, CreateOrderResponse>> createOrder({
     PaypalToken paypalToken,
     CreateOrder createOrder,
   }) async {
@@ -71,9 +71,13 @@ class PaypalRepository implements IPaypalRepository {
         return left(const PaypalFailure.unexpected());
       }
 
-      debugPrint('CreateOrder : ${response.data.toString()}');
+      // debugPrint('CreateOrder : ${response.data.toString()}');
+      final orderResponse =
+          CreateOrderResponseDto.fromJson(response.data as Map<String, dynamic>)
+              .toDomain();
+      // debugPrint('CreateOrderResponse : ${orderResponse.toString()}');
 
-      return right(unit);
+      return right(orderResponse);
     } on DioError catch (e) {
       debugPrint('CreateOrderError : ${e.response.data.toString()}');
       return left(const PaypalFailure.unexpected());

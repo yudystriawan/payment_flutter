@@ -6,7 +6,8 @@ abstract class PaypalDataState with _$PaypalDataState {
     @required bool isLoading,
     @required CreateOrder createOrder,
     @required
-        Option<Either<PaypalFailure, Unit>> createOrderFailureOrSuccessOption,
+        Option<Either<PaypalFailure, CreateOrderResponse>>
+            createOrderFailureOrSuccessOption,
   }) = _PaypalDataState;
 
   factory PaypalDataState.initial() => PaypalDataState(

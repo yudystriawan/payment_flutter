@@ -6,7 +6,7 @@ import 'token.dart';
 
 abstract class IPaypalRepository {
   Future<Either<PaypalFailure, PaypalToken>> fetchToken();
-  Future<Either<PaypalFailure, Unit>> createOrder({
+  Future<Either<PaypalFailure, CreateOrderResponse>> createOrder({
     PaypalToken paypalToken,
     CreateOrder createOrder,
   });

@@ -305,7 +305,7 @@ class _$PaypalDataStateTearOff {
       @required
           CreateOrder createOrder,
       @required
-          Option<Either<PaypalFailure, Unit>>
+          Option<Either<PaypalFailure, CreateOrderResponse>>
               createOrderFailureOrSuccessOption}) {
     return _PaypalDataState(
       isLoading: isLoading,
@@ -321,7 +321,8 @@ const $PaypalDataState = _$PaypalDataStateTearOff();
 mixin _$PaypalDataState {
   bool get isLoading;
   CreateOrder get createOrder;
-  Option<Either<PaypalFailure, Unit>> get createOrderFailureOrSuccessOption;
+  Option<Either<PaypalFailure, CreateOrderResponse>>
+      get createOrderFailureOrSuccessOption;
 
   $PaypalDataStateCopyWith<PaypalDataState> get copyWith;
 }
@@ -333,7 +334,8 @@ abstract class $PaypalDataStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       CreateOrder createOrder,
-      Option<Either<PaypalFailure, Unit>> createOrderFailureOrSuccessOption});
+      Option<Either<PaypalFailure, CreateOrderResponse>>
+          createOrderFailureOrSuccessOption});
 
   $CreateOrderCopyWith<$Res> get createOrder;
 }
@@ -361,7 +363,7 @@ class _$PaypalDataStateCopyWithImpl<$Res>
           createOrderFailureOrSuccessOption == freezed
               ? _value.createOrderFailureOrSuccessOption
               : createOrderFailureOrSuccessOption
-                  as Option<Either<PaypalFailure, Unit>>,
+                  as Option<Either<PaypalFailure, CreateOrderResponse>>,
     ));
   }
 
@@ -385,7 +387,8 @@ abstract class _$PaypalDataStateCopyWith<$Res>
   $Res call(
       {bool isLoading,
       CreateOrder createOrder,
-      Option<Either<PaypalFailure, Unit>> createOrderFailureOrSuccessOption});
+      Option<Either<PaypalFailure, CreateOrderResponse>>
+          createOrderFailureOrSuccessOption});
 
   @override
   $CreateOrderCopyWith<$Res> get createOrder;
@@ -416,7 +419,7 @@ class __$PaypalDataStateCopyWithImpl<$Res>
           createOrderFailureOrSuccessOption == freezed
               ? _value.createOrderFailureOrSuccessOption
               : createOrderFailureOrSuccessOption
-                  as Option<Either<PaypalFailure, Unit>>,
+                  as Option<Either<PaypalFailure, CreateOrderResponse>>,
     ));
   }
 }
@@ -437,7 +440,8 @@ class _$_PaypalDataState
   @override
   final CreateOrder createOrder;
   @override
-  final Option<Either<PaypalFailure, Unit>> createOrderFailureOrSuccessOption;
+  final Option<Either<PaypalFailure, CreateOrderResponse>>
+      createOrderFailureOrSuccessOption;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -491,7 +495,7 @@ abstract class _PaypalDataState implements PaypalDataState {
       @required
           CreateOrder createOrder,
       @required
-          Option<Either<PaypalFailure, Unit>>
+          Option<Either<PaypalFailure, CreateOrderResponse>>
               createOrderFailureOrSuccessOption}) = _$_PaypalDataState;
 
   @override
@@ -499,7 +503,8 @@ abstract class _PaypalDataState implements PaypalDataState {
   @override
   CreateOrder get createOrder;
   @override
-  Option<Either<PaypalFailure, Unit>> get createOrderFailureOrSuccessOption;
+  Option<Either<PaypalFailure, CreateOrderResponse>>
+      get createOrderFailureOrSuccessOption;
   @override
   _$PaypalDataStateCopyWith<_PaypalDataState> get copyWith;
 }

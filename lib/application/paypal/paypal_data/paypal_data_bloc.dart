@@ -42,7 +42,7 @@ class PaypalDataBloc extends Bloc<PaypalDataEvent, PaypalDataState> {
         );
       },
       checkoutButtonPressed: (e) async* {
-        Either<PaypalFailure, Unit> createOrderFailureOrSuccess;
+        Either<PaypalFailure, CreateOrderResponse> createOrderFailureOrSuccess;
         yield state.copyWith.call(
           isLoading: true,
         );
