@@ -83,4 +83,31 @@ class PaypalRepository implements IPaypalRepository {
       return left(const PaypalFailure.unexpected());
     }
   }
+
+  @override
+  Future<Either<PaypalFailure, Unit>> capturePayment({
+    PaypalToken paypalToken,
+    String orderId,
+  }) async {
+    _dio.options.headers['Authorization'] =
+        'Bearer ${paypalToken.accessToken.getOrCrash()}';
+    _dio.options.contentType = Headers.jsonContentType;
+
+    try {
+      final response = await _dio.post(
+        '${ConfigReader.getPaypalBaseUrl()}/v2/checkout/orders/$orderId/capture',
+      );
+
+      if (response.statusCode != 201) {
+        return left(const PaypalFailure.unexpected());
+      }
+
+      debugPrint('capturePayment ${response.data}');
+
+      return right(unit);
+    } on DioError catch (e) {
+      debugPrint('capturePaymentError ${e.response.data}');
+      return left(const PaypalFailure.unexpected());
+    }
+  }
 }

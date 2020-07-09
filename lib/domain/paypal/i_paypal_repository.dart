@@ -10,4 +10,8 @@ abstract class IPaypalRepository {
     PaypalToken paypalToken,
     CreateOrder createOrder,
   });
+  Future<Either<PaypalFailure, Unit>> capturePayment({
+    PaypalToken paypalToken,
+    String orderId,
+  });
 }
