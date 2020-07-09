@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:payment_flutter/domain/paypal/paypal.dart';
+import 'package:payment_flutter/presentation/routes/router.gr.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class PaypalAppovedPage extends StatelessWidget {
@@ -33,7 +35,11 @@ class PaypalAppovedPage extends StatelessWidget {
         navigationDelegate: (navigation) {
           final uri = Uri.parse(navigation.url);
           debugPrint('navigation ${navigation.url}');
-          debugPrint('uri ${uri.queryParameters}');
+          debugPrint('uri ${uri.queryParametersAll}');
+          if (uri.queryParameters['token'].isNotEmpty) {
+            ExtendedNavigator.of(context)
+                .popUntil((route) => route.settings.name == Routes.homePage);
+          }
           return;
         },
       ),
