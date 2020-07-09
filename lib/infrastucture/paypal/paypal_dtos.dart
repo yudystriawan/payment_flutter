@@ -79,6 +79,9 @@ abstract class CreateOrderDto with _$CreateOrderDto {
     @JsonKey(name: 'purchase_units')
     @required
         List<PurchaseUnitDto> purchaseUnits,
+    @JsonKey(name: 'application_context')
+    @required
+        ApplicationContextDto applicationContext,
   }) = _CreateOrderDto;
 
   factory CreateOrderDto.fromDomain(CreateOrder createOrder) {
@@ -87,11 +90,31 @@ abstract class CreateOrderDto with _$CreateOrderDto {
       purchaseUnits: createOrder.purchaseUnits
           .map((e) => PurchaseUnitDto.fromDomain(e))
           .toList(),
+      applicationContext:
+          ApplicationContextDto.fromDomain(createOrder.applicationContext),
     );
   }
 
   factory CreateOrderDto.fromJson(Map<String, dynamic> json) =>
       _$CreateOrderDtoFromJson(json);
+}
+
+@freezed
+abstract class ApplicationContextDto with _$ApplicationContextDto {
+  const factory ApplicationContextDto({
+    @required String returnUrl,
+    @required String cancelUrl,
+  }) = _ApplicationContextDto;
+
+  factory ApplicationContextDto.fromDomain(ApplicationContext data) {
+    return ApplicationContextDto(
+      returnUrl: data.returnUrl.getOrCrash(),
+      cancelUrl: data.cancelUrl.getOrCrash(),
+    );
+  }
+
+  factory ApplicationContextDto.fromJson(Map<String, dynamic> json) =>
+      _$ApplicationContextDtoFromJson(json);
 }
 
 @freezed

@@ -594,10 +594,14 @@ class _$CreateOrderDtoTearOff {
           String intent,
       @required
       @JsonKey(name: 'purchase_units')
-          List<PurchaseUnitDto> purchaseUnits}) {
+          List<PurchaseUnitDto> purchaseUnits,
+      @required
+      @JsonKey(name: 'application_context')
+          ApplicationContextDto applicationContext}) {
     return _CreateOrderDto(
       intent: intent,
       purchaseUnits: purchaseUnits,
+      applicationContext: applicationContext,
     );
   }
 }
@@ -609,6 +613,8 @@ mixin _$CreateOrderDto {
   String get intent;
   @JsonKey(name: 'purchase_units')
   List<PurchaseUnitDto> get purchaseUnits;
+  @JsonKey(name: 'application_context')
+  ApplicationContextDto get applicationContext;
 
   Map<String, dynamic> toJson();
   $CreateOrderDtoCopyWith<CreateOrderDto> get copyWith;
@@ -620,7 +626,12 @@ abstract class $CreateOrderDtoCopyWith<$Res> {
       _$CreateOrderDtoCopyWithImpl<$Res>;
   $Res call(
       {String intent,
-      @JsonKey(name: 'purchase_units') List<PurchaseUnitDto> purchaseUnits});
+      @JsonKey(name: 'purchase_units')
+          List<PurchaseUnitDto> purchaseUnits,
+      @JsonKey(name: 'application_context')
+          ApplicationContextDto applicationContext});
+
+  $ApplicationContextDtoCopyWith<$Res> get applicationContext;
 }
 
 class _$CreateOrderDtoCopyWithImpl<$Res>
@@ -635,13 +646,28 @@ class _$CreateOrderDtoCopyWithImpl<$Res>
   $Res call({
     Object intent = freezed,
     Object purchaseUnits = freezed,
+    Object applicationContext = freezed,
   }) {
     return _then(_value.copyWith(
       intent: intent == freezed ? _value.intent : intent as String,
       purchaseUnits: purchaseUnits == freezed
           ? _value.purchaseUnits
           : purchaseUnits as List<PurchaseUnitDto>,
+      applicationContext: applicationContext == freezed
+          ? _value.applicationContext
+          : applicationContext as ApplicationContextDto,
     ));
+  }
+
+  @override
+  $ApplicationContextDtoCopyWith<$Res> get applicationContext {
+    if (_value.applicationContext == null) {
+      return null;
+    }
+    return $ApplicationContextDtoCopyWith<$Res>(_value.applicationContext,
+        (value) {
+      return _then(_value.copyWith(applicationContext: value));
+    });
   }
 }
 
@@ -653,7 +679,13 @@ abstract class _$CreateOrderDtoCopyWith<$Res>
   @override
   $Res call(
       {String intent,
-      @JsonKey(name: 'purchase_units') List<PurchaseUnitDto> purchaseUnits});
+      @JsonKey(name: 'purchase_units')
+          List<PurchaseUnitDto> purchaseUnits,
+      @JsonKey(name: 'application_context')
+          ApplicationContextDto applicationContext});
+
+  @override
+  $ApplicationContextDtoCopyWith<$Res> get applicationContext;
 }
 
 class __$CreateOrderDtoCopyWithImpl<$Res>
@@ -670,12 +702,16 @@ class __$CreateOrderDtoCopyWithImpl<$Res>
   $Res call({
     Object intent = freezed,
     Object purchaseUnits = freezed,
+    Object applicationContext = freezed,
   }) {
     return _then(_CreateOrderDto(
       intent: intent == freezed ? _value.intent : intent as String,
       purchaseUnits: purchaseUnits == freezed
           ? _value.purchaseUnits
           : purchaseUnits as List<PurchaseUnitDto>,
+      applicationContext: applicationContext == freezed
+          ? _value.applicationContext
+          : applicationContext as ApplicationContextDto,
     ));
   }
 }
@@ -684,9 +720,11 @@ class __$CreateOrderDtoCopyWithImpl<$Res>
 class _$_CreateOrderDto implements _CreateOrderDto {
   const _$_CreateOrderDto(
       {@required this.intent,
-      @required @JsonKey(name: 'purchase_units') this.purchaseUnits})
+      @required @JsonKey(name: 'purchase_units') this.purchaseUnits,
+      @required @JsonKey(name: 'application_context') this.applicationContext})
       : assert(intent != null),
-        assert(purchaseUnits != null);
+        assert(purchaseUnits != null),
+        assert(applicationContext != null);
 
   factory _$_CreateOrderDto.fromJson(Map<String, dynamic> json) =>
       _$_$_CreateOrderDtoFromJson(json);
@@ -696,10 +734,13 @@ class _$_CreateOrderDto implements _CreateOrderDto {
   @override
   @JsonKey(name: 'purchase_units')
   final List<PurchaseUnitDto> purchaseUnits;
+  @override
+  @JsonKey(name: 'application_context')
+  final ApplicationContextDto applicationContext;
 
   @override
   String toString() {
-    return 'CreateOrderDto(intent: $intent, purchaseUnits: $purchaseUnits)';
+    return 'CreateOrderDto(intent: $intent, purchaseUnits: $purchaseUnits, applicationContext: $applicationContext)';
   }
 
   @override
@@ -710,14 +751,18 @@ class _$_CreateOrderDto implements _CreateOrderDto {
                 const DeepCollectionEquality().equals(other.intent, intent)) &&
             (identical(other.purchaseUnits, purchaseUnits) ||
                 const DeepCollectionEquality()
-                    .equals(other.purchaseUnits, purchaseUnits)));
+                    .equals(other.purchaseUnits, purchaseUnits)) &&
+            (identical(other.applicationContext, applicationContext) ||
+                const DeepCollectionEquality()
+                    .equals(other.applicationContext, applicationContext)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(intent) ^
-      const DeepCollectionEquality().hash(purchaseUnits);
+      const DeepCollectionEquality().hash(purchaseUnits) ^
+      const DeepCollectionEquality().hash(applicationContext);
 
   @override
   _$CreateOrderDtoCopyWith<_CreateOrderDto> get copyWith =>
@@ -735,7 +780,10 @@ abstract class _CreateOrderDto implements CreateOrderDto {
           String intent,
       @required
       @JsonKey(name: 'purchase_units')
-          List<PurchaseUnitDto> purchaseUnits}) = _$_CreateOrderDto;
+          List<PurchaseUnitDto> purchaseUnits,
+      @required
+      @JsonKey(name: 'application_context')
+          ApplicationContextDto applicationContext}) = _$_CreateOrderDto;
 
   factory _CreateOrderDto.fromJson(Map<String, dynamic> json) =
       _$_CreateOrderDto.fromJson;
@@ -746,7 +794,161 @@ abstract class _CreateOrderDto implements CreateOrderDto {
   @JsonKey(name: 'purchase_units')
   List<PurchaseUnitDto> get purchaseUnits;
   @override
+  @JsonKey(name: 'application_context')
+  ApplicationContextDto get applicationContext;
+  @override
   _$CreateOrderDtoCopyWith<_CreateOrderDto> get copyWith;
+}
+
+ApplicationContextDto _$ApplicationContextDtoFromJson(
+    Map<String, dynamic> json) {
+  return _ApplicationContextDto.fromJson(json);
+}
+
+class _$ApplicationContextDtoTearOff {
+  const _$ApplicationContextDtoTearOff();
+
+  _ApplicationContextDto call(
+      {@required String returnUrl, @required String cancelUrl}) {
+    return _ApplicationContextDto(
+      returnUrl: returnUrl,
+      cancelUrl: cancelUrl,
+    );
+  }
+}
+
+// ignore: unused_element
+const $ApplicationContextDto = _$ApplicationContextDtoTearOff();
+
+mixin _$ApplicationContextDto {
+  String get returnUrl;
+  String get cancelUrl;
+
+  Map<String, dynamic> toJson();
+  $ApplicationContextDtoCopyWith<ApplicationContextDto> get copyWith;
+}
+
+abstract class $ApplicationContextDtoCopyWith<$Res> {
+  factory $ApplicationContextDtoCopyWith(ApplicationContextDto value,
+          $Res Function(ApplicationContextDto) then) =
+      _$ApplicationContextDtoCopyWithImpl<$Res>;
+  $Res call({String returnUrl, String cancelUrl});
+}
+
+class _$ApplicationContextDtoCopyWithImpl<$Res>
+    implements $ApplicationContextDtoCopyWith<$Res> {
+  _$ApplicationContextDtoCopyWithImpl(this._value, this._then);
+
+  final ApplicationContextDto _value;
+  // ignore: unused_field
+  final $Res Function(ApplicationContextDto) _then;
+
+  @override
+  $Res call({
+    Object returnUrl = freezed,
+    Object cancelUrl = freezed,
+  }) {
+    return _then(_value.copyWith(
+      returnUrl: returnUrl == freezed ? _value.returnUrl : returnUrl as String,
+      cancelUrl: cancelUrl == freezed ? _value.cancelUrl : cancelUrl as String,
+    ));
+  }
+}
+
+abstract class _$ApplicationContextDtoCopyWith<$Res>
+    implements $ApplicationContextDtoCopyWith<$Res> {
+  factory _$ApplicationContextDtoCopyWith(_ApplicationContextDto value,
+          $Res Function(_ApplicationContextDto) then) =
+      __$ApplicationContextDtoCopyWithImpl<$Res>;
+  @override
+  $Res call({String returnUrl, String cancelUrl});
+}
+
+class __$ApplicationContextDtoCopyWithImpl<$Res>
+    extends _$ApplicationContextDtoCopyWithImpl<$Res>
+    implements _$ApplicationContextDtoCopyWith<$Res> {
+  __$ApplicationContextDtoCopyWithImpl(_ApplicationContextDto _value,
+      $Res Function(_ApplicationContextDto) _then)
+      : super(_value, (v) => _then(v as _ApplicationContextDto));
+
+  @override
+  _ApplicationContextDto get _value => super._value as _ApplicationContextDto;
+
+  @override
+  $Res call({
+    Object returnUrl = freezed,
+    Object cancelUrl = freezed,
+  }) {
+    return _then(_ApplicationContextDto(
+      returnUrl: returnUrl == freezed ? _value.returnUrl : returnUrl as String,
+      cancelUrl: cancelUrl == freezed ? _value.cancelUrl : cancelUrl as String,
+    ));
+  }
+}
+
+@JsonSerializable()
+class _$_ApplicationContextDto implements _ApplicationContextDto {
+  const _$_ApplicationContextDto(
+      {@required this.returnUrl, @required this.cancelUrl})
+      : assert(returnUrl != null),
+        assert(cancelUrl != null);
+
+  factory _$_ApplicationContextDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_ApplicationContextDtoFromJson(json);
+
+  @override
+  final String returnUrl;
+  @override
+  final String cancelUrl;
+
+  @override
+  String toString() {
+    return 'ApplicationContextDto(returnUrl: $returnUrl, cancelUrl: $cancelUrl)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ApplicationContextDto &&
+            (identical(other.returnUrl, returnUrl) ||
+                const DeepCollectionEquality()
+                    .equals(other.returnUrl, returnUrl)) &&
+            (identical(other.cancelUrl, cancelUrl) ||
+                const DeepCollectionEquality()
+                    .equals(other.cancelUrl, cancelUrl)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(returnUrl) ^
+      const DeepCollectionEquality().hash(cancelUrl);
+
+  @override
+  _$ApplicationContextDtoCopyWith<_ApplicationContextDto> get copyWith =>
+      __$ApplicationContextDtoCopyWithImpl<_ApplicationContextDto>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ApplicationContextDtoToJson(this);
+  }
+}
+
+abstract class _ApplicationContextDto implements ApplicationContextDto {
+  const factory _ApplicationContextDto(
+      {@required String returnUrl,
+      @required String cancelUrl}) = _$_ApplicationContextDto;
+
+  factory _ApplicationContextDto.fromJson(Map<String, dynamic> json) =
+      _$_ApplicationContextDto.fromJson;
+
+  @override
+  String get returnUrl;
+  @override
+  String get cancelUrl;
+  @override
+  _$ApplicationContextDtoCopyWith<_ApplicationContextDto> get copyWith;
 }
 
 PurchaseUnitDto _$PurchaseUnitDtoFromJson(Map<String, dynamic> json) {

@@ -71,6 +71,10 @@ _$_CreateOrderDto _$_$_CreateOrderDtoFromJson(Map<String, dynamic> json) {
             ? null
             : PurchaseUnitDto.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    applicationContext: json['application_context'] == null
+        ? null
+        : ApplicationContextDto.fromJson(
+            json['application_context'] as Map<String, dynamic>),
   );
 }
 
@@ -78,6 +82,22 @@ Map<String, dynamic> _$_$_CreateOrderDtoToJson(_$_CreateOrderDto instance) =>
     <String, dynamic>{
       'intent': instance.intent,
       'purchase_units': instance.purchaseUnits,
+      'application_context': instance.applicationContext,
+    };
+
+_$_ApplicationContextDto _$_$_ApplicationContextDtoFromJson(
+    Map<String, dynamic> json) {
+  return _$_ApplicationContextDto(
+    returnUrl: json['returnUrl'] as String,
+    cancelUrl: json['cancelUrl'] as String,
+  );
+}
+
+Map<String, dynamic> _$_$_ApplicationContextDtoToJson(
+        _$_ApplicationContextDto instance) =>
+    <String, dynamic>{
+      'returnUrl': instance.returnUrl,
+      'cancelUrl': instance.cancelUrl,
     };
 
 _$_PurchaseUnitDto _$_$_PurchaseUnitDtoFromJson(Map<String, dynamic> json) {
