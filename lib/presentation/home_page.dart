@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +8,7 @@ import 'package:payment_flutter/domain/paypal/paypal.dart';
 import 'package:payment_flutter/injection.dart';
 
 import 'routes/common_widgets/loading_overlay.dart';
+import 'routes/router.gr.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -28,8 +30,12 @@ class HomePage extends StatelessWidget {
                 ),
               ).show(context),
               (response) {
-                FlushbarHelper.createInformation(message: 'Success')
-                    .show(context);
+                ExtendedNavigator.of(context).pushNamed(
+                  Routes.paypalAppovedPage,
+                  arguments: PaypalAppovedPageArguments(
+                    orderResponse: response,
+                  ),
+                );
               },
             ),
           );
