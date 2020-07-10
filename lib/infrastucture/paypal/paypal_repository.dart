@@ -93,16 +93,21 @@ class PaypalRepository implements IPaypalRepository {
         'Bearer ${paypalToken.accessToken.getOrCrash()}';
     _dio.options.contentType = Headers.jsonContentType;
 
+    debugPrint('contentType : ${_dio.options.headers.toString()}');
     try {
       final response = await _dio.post(
         '${ConfigReader.getPaypalBaseUrl()}/v2/checkout/orders/$orderId/capture',
+        data: {},
       );
 
       if (response.statusCode != 201) {
         return left(const PaypalFailure.unexpected());
       }
 
-      debugPrint('capturePayment ${response.data}');
+      final responseData = CreateOrderResponseDto.fromJson(
+          response.data as Map<String, dynamic>);
+
+      debugPrint('capturePayment ${responseData.toString()}');
 
       return right(unit);
     } on DioError catch (e) {

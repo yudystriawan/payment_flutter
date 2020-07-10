@@ -37,8 +37,13 @@ class PaypalAppovedPage extends StatelessWidget {
           debugPrint('navigation ${navigation.url}');
           debugPrint('uri ${uri.queryParametersAll}');
           if (uri.queryParameters['token'].isNotEmpty) {
-            ExtendedNavigator.of(context)
-                .popUntil((route) => route.settings.name == Routes.homePage);
+            debugPrint('token ${uri.queryParameters['token']}');
+            ExtendedNavigator.of(context).pushReplacementNamed(
+              Routes.capturePaymentPage,
+              arguments: CapturePaymentPageArguments(
+                orderId: uri.queryParameters['token'],
+              ),
+            );
           }
           return;
         },
