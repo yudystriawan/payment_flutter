@@ -61,3 +61,17 @@ class StringSingleLine extends ValueObject<String> {
 
   const StringSingleLine._(this.value);
 }
+
+class NominalInteger extends ValueObject<int> {
+  @override
+  final Either<ValueFailure<int>, int> value;
+
+  factory NominalInteger(int input) {
+    assert(input != null);
+    return NominalInteger._(
+      validateNominal(input),
+    );
+  }
+
+  NominalInteger._(this.value);
+}
