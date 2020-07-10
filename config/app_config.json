@@ -1,0 +1,5 @@
+{
+    "paypalBaseUrl": "https://api.sandbox.paypal.com",
+    "paypalClientId": "AbIiJ3HkHKlo3fpcfoUKyH5zwQY_jxlFbI8pEoKtg6fi7CXSgpYqiax3iDS4ubB-vmPu31N8R41zp7gu",
+    "paypalSecret": "EF5Jlyp8tey_yUWuFKypLx4Ij0O7Nvf9jTicdrLiYNqjJxJ693DOeJwAMogJq7rsupW5joCuO_XUuuG-"
+}
